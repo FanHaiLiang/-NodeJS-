@@ -52,3 +52,11 @@
          process.stdout.write('read from console:' + data.toString())
       });
       ```
+### process.nextTick(callback)的功能是为事件循环设置一项任务,Node.js会在下次事件循环响应时调用callback.
+      ```js
+      function doSomething(args,callback){
+         sometingComplicated(args);
+         callback();
+      }
+      ```
+
