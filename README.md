@@ -39,8 +39,16 @@
   node --debug[=port] script.js
   node --debug-brk[=port] script.js
 # 全局变量
-## process是一个全局变量,global对象的属性.它用于描述当前No的.js进程状态的对象,提供了一个与操作系统的简单接口.
-  process.argv是命令行参数数组,第一个元素是node,第二个元素是脚本文件名,从第三个元素开始每个元素是一个运行参数.
-  ```js
-  console.log(process.argv);
-  ```
+### process是一个全局变量,global对象的属性.它用于描述当前No的.js进程状态的对象,提供了一个与操作系统的简单接口.
+      process.argv是命令行参数数组,第一个元素是node,第二个元素是脚本文件名,从第三个元素开始每个元素是一个运行参数.
+      ```js
+      console.log(process.argv);
+      ```
+### process.stdou是标准输出流,通常我们使用conlose.log()向标准流输出打印字符,而process.stdout.write()函数提供了更底层的接口.
+### process.stdin是标准输入流,初始时它被暂停的,要想从标准流输入读取数据,你必须恢复流,并手动编写流的事件响应函数.
+      ```js
+      process.stdin.resume()
+      process.stdin.on('data',function(data){
+         process.stdout.write('read from console:' + data.toString())
+      });
+      ```
