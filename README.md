@@ -55,7 +55,7 @@
 ### process.nextTick(callback)的功能是为事件循环设置一项任务,Node.js会在下次事件循环响应时调用callback.
       ```js
       function doSomething(args,callback){
-         sometingComplicated(args);
+         sometingComplicated(args);
          process.nextTick(callback);[^1]:不会等待上第一个函数执行完毕在执行回调函数,而是立即执行
        }
       
@@ -79,8 +79,6 @@
 * EventEmitter.removeAllListeners([event]) 移除所有事件的所有监听器,如果指定 event ,则移除指定事件的所有监听器
 # error事件
    * EventEmitter定义了一个特殊的事件error,它包含了"错误"的语义,我们再遇到异常的时候通常会发射error事件.当error被发射时,Eventmitter规定如果没有响应的监听器,Node.js会把它当作异常,退出程序并打印调用栈.我们一般要为会发射error事件的对象设置监听器,避免遇到错误后整个程序崩溃.
-# 文件 系统fs
-   * 
-   
-   
-   
+# 文件系统fs
+   * fs 模块是文件操作的封装,它提供了文件的读取,写入,更名,删除,遍历目录,连接POSIX文件系统操作. 
+* 
