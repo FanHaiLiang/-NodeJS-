@@ -63,4 +63,9 @@
          compute();
       })
       ```
-
+# 常用工具 util util是一个Node.js核心模块,提供常用函数的集合,用于弥补核心JavaScript的功能过于精简的不足
+### util.inherits(constructor,superConstructor)是一个实现对象间原型继承的函数.
+### util.inspect(obj,[showHidden],[depth],[colors])是一个将任意对象转换为字符串的方法,通常用于调试和错误输出.
+* showHidden 是一个 可选参数,如果值为true,将会输出更多隐藏信息.
+* depth 表示最大递归的层数,如果对象很复杂,你可以指定层数以控制输出信息的多少。如果不指定 depth ,默认会递归2层,指定为 null 表示将不限递归层数完整遍历对象
+* 如果color值为true,输出格式将会以ANSI颜色编码,通常用于在终端显示更漂亮的效果.
