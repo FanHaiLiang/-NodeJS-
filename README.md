@@ -56,7 +56,7 @@
       ```js
       function doSomething(args,callback){
          sometingComplicated(args);
-         process.nextTick(callback);//不会等待上第一个函数执行完毕在执行回调函数,而是立即执行
+         process.nextTick(callback);[^1]:不会等待上第一个函数执行完毕在执行回调函数,而是立即执行
        }
       
       doSomething(function onEnd(){
