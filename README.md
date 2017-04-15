@@ -69,3 +69,18 @@
 * showHidden 是一个 可选参数,如果值为true,将会输出更多隐藏信息.
 * depth 表示最大递归的层数,如果对象很复杂,你可以指定层数以控制输出信息的多少。如果不指定 depth ,默认会递归2层,指定为 null 表示将不限递归层数完整遍历对象
 * 如果color值为true,输出格式将会以ANSI颜色编码,通常用于在终端显示更漂亮的效果.
+# events Node.js本身架构就是事件式的,而他提供了唯一的接口,所以称Node.js事件编程的基石.events模块不仅用于用户代码与Node.js下层事件循环的交互,还几乎被所有的模块依赖.
+### 事件驱动 events模块只提供了一个对象:events.EventEmitter.EventEmitter的核心就是事件发射与事件监听器功能的封装.
+##### EventEmitter常用的API
+* EventEmitter.on(event,listrner)为指定事件注册一个监听,接受一个字符串event和一个回调函数listener.
+* EventEmitter.emit(event,[arg1],[arg2],[...])发射event事件,传递若干可选参数到事件监听器的参数表.
+* EventEmitter.once(event,listener)为指定事件注册一个单次监听器,即监听器最多会触发一次,触发后立刻解除该接听器.
+* EventEmitter.removeListener(event, listener) 移除指定事件的某个监听器, listener 必须是该事件已经注册过的监听器.
+* EventEmitter.removeAllListeners([event]) 移除所有事件的所有监听器,如果指定 event ,则移除指定事件的所有监听器
+# error事件
+   * EventEmitter定义了一个特殊的事件error,它包含了"错误"的语义,我们再遇到异常的时候通常会发射error事件.当error被发射时,Eventmitter规定如果没有响应的监听器,Node.js会把它当作异常,退出程序并打印调用栈.我们一般要为会发射error事件的对象设置监听器,避免遇到错误后整个程序崩溃.
+# 文件 系统fs
+   * 
+   
+   
+   
