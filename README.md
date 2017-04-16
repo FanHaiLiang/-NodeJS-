@@ -155,5 +155,71 @@ http.createServer(function(req,res){
     res.end(util.inspect(url.parse(res.url,true)));
 })
 ```
-      * 在浏览器中访问http://127.0.0.1:3000/user?name=byvoid&email=byvoid@byvoid.com
-      * 通过url.parse，原始path被解析成一个对象，其中query就是我们所谓的GET请求的内容，而路径则是pathname.
+   * 在浏览器中访问http://127.0.0.1:3000/user?name=byvoid&email=byvoid@byvoid.com
+   * 通过url.parse，原始path被解析成一个对象，其中query就是我们所谓的GET请求的内容，而路径则是pathname.
+   * 获取POST请求内容
+      * POST请求的内容全部都在请求体中．很多时候不需要理会请求体的内容，恶意的POST请求会大大消耗服务器的资源．所以Node.js默认是不会解析请求体的．当你需要手动来做．实现方法：
+```js
+var http = require('http');
+var querystring = require('querystring');
+var util = require('util');
+http.createServer(function(req,res){
+   var post = '';
+   
+   req.on('data',function(chunk){
+      post += chunk;
+   })
+   
+   req.on('end',function(){
+      post = querystring.parse(post);
+      res.end(util.inspect(post));
+   });
+}).listen(3000);
+
+```
+   * http.ServerResponse
+      * http.ServerRespose是返回给客户端的信息，决定了用户最终能看到的结果．它也是由http.Server的request事件发送的，作为第二个参数传递，一般简称为response或res.
+      * http.ServerResponse有三个重要的成员函数，用于返回响应头，响应内容以及结束请求．
+      * response.writeHead(statusCode,[headers]):向请求的客户端发送响应头
+         * statusCode是http状态码，如200(请求成功，404(未找到)等.
+         * headers表示响应头的每个属性．
+      * response.write(data,[encoding]):向请求的客户端发送响应内容．默认encoding是utf-8
+      * response.end([data],[encoding]):响应结束，告知客户端所有发送已经完成．
+# HTTP客户端
+   * http模块提供了两个函数http.request和http.get，功能是作为客户端向HTTP服务器发起请求．
+      * http.request(options,callback)发起HTTP请求．接受两个参数option是一个类似于关联数组的对象，表示请求的参数，callback是请求的回调函数.option常用的参数:
+         * host:请求网站的域名或IP地址
+         * post:请求网站的端口，默认80
+         * method:请求方法，默认GET
+         * path:请求的相对于跟的路径，默认是'/'.
+         * headers:一个关联数组对象，为请求头的内容．
+      * callback　传递一个参数，为http.ClientRequest的实例
+      * http.request返回一个http.ClientRequest的实例
+      * 例如：
+```js
+var http = require('http');
+var querystring = require('querystring');
+var contents = querystring.stringify({
+   name:'byvoid',
+   email:'byvod@byvoid.com',
+   address:'Zijing 2#, Tsinghua University',
+});
+
+var option = {
+   host:'www.byvoid.com',
+   path:'/application/node/post.php',
+   method:'POST',
+   headers:{
+      'Content-Type':'application/x-www-form-urlencoded',
+      'Content-Length':contents.length
+   }
+};
+
+var req= http.requestoptions,function(res){
+   res.setEncoding('utf8');
+   res.on('data',function(data){
+      console.log(data);
+   })
+};
+```
+* http.get(options,callback)http模块还提供了一个更加简便的方法用于处理GET请求:gttp.get.它是http.request的简化版，唯一的区别在于http.get自动设为了GET请求，同时不需要手动调用req.end().
