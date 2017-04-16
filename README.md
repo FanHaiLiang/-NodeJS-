@@ -120,3 +120,12 @@
 * 读取链接                  fs.readlink(path, [callback(err,linkString)])                                       fs.readlinkSync(path)
 * 修改文件时间戳             fs.utimes(path, atime, mtime, [callback(err)])                                      fs.utimesSync(path, atime, mtime)
 * 修改 文件时间 戳(文件描述符) fs.futimes(fd, atime, mtime, [callback(err)])                                       fs.futimesSync(fd, atime, mtime)
+# HTTP服务器与客户端
+  * Node.js标准库提供了http模块，其中封装了一个高效的HTTP服务器和一个简易的HTTP客户端．
+# HTTP服务器
+   * http.server事件
+      * http.server是一个基于事件的HTTP服务器，所有的请求都被封装为独立的事件，开发者只需要对它的事件编写响应函数即可实现HTTP服务器的所有功能．
+      * 继承自EventEmitter,提供以下几个事件．
+         * request:当客户端请求到来时，该事件被触发，提供两个参数req和res，分贝是http.ServerRequest和http.ServerResponse的实例，表示响应和请求信息．
+         * connection:当TCP连接建立时，该事件被触发，提供一个参数socket,为net.Socket的实例．connection事件的粒度大于request.
+         * close：当服务器关闭时，该事件辈出发．注意不是再用户连接断开时．
