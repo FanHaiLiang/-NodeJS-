@@ -128,8 +128,7 @@
       * connection:当TCP连接建立时，该事件被触发，提供一个参数socket,为net.Socket的实例．connection事件的粒度大于request.
       * close：当服务器关闭时，该事件辈出发．注意不是再用户连接断开时．
    * http.ServerRequest:是HTTP请求信息，是后端开发者最关注的内容，它一般由http.Srver的request事件发送，作为第一个参数传递ServerRequest一些属性．
-   传输,也还是调用 close 。
-   * ServerRequest 的属性
+   * ServerRequest 的属性
       * 名称　含义
       * complete 客户端请求是否已经发送完成
       * httpVersion HTTP 协议版本,通常是 1.0 或 1.1
