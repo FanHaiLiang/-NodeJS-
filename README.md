@@ -127,3 +127,21 @@
       * request:当客户端请求到来时，该事件被触发，提供两个参数req和res，分贝是http.ServerRequest和http.ServerResponse的实例，表示响应和请求信息．
       * connection:当TCP连接建立时，该事件被触发，提供一个参数socket,为net.Socket的实例．connection事件的粒度大于request.
       * close：当服务器关闭时，该事件辈出发．注意不是再用户连接断开时．
+   * http.ServerRequest:是HTTP请求信息，是后端开发者最关注的内容，它一般由http.Srver的request事件发送，作为第一个参数传递ServerRequest一些属性．
+   传输,也还是调用 close 。
+   * ServerRequest 的属性
+      * 名称　含义
+      * complete 客户端请求是否已经发送完成
+      * httpVersion HTTP 协议版本,通常是 1.0 或 1.1
+      * bmethod HTTP 请求方法,如 GET、POST、PUT、DELETE 等
+      * url 原始的请求路径,例如 /static/image/x.jpg 或 /user?name=byvoid
+      * headers HTTP 请求头
+      * trailers HTTP 请求尾(不常见)
+      * connection 当前 HTTP 连接套接字,为 net.Socket 的实例
+      * socket connection 属性的别名
+      * client client 属性的别名
+   * HTTP请求一般可以分为两个部分:请求头和请求体．提供了三个事件用于请求体传输．
+      * data:当请求体数据到来时，该事件被触发．该事件提供一个参数chunk，表示接收到的数据．
+      * end:当请求体数据传输完成时，该事件被触发，此后将不会再有数据到来．
+      * colse:用户当前请求结束时，该事件被触发．不同于end,如果用户强制终止了传输，也还是调用close.
+      
