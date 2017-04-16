@@ -145,15 +145,15 @@
       * colse:用户当前请求结束时，该事件被触发．不同于end,如果用户强制终止了传输，也还是调用close.
    * 获取GET请求内容
       * 由于get请求直接被嵌入在路径中，URl是完整的请求路径，包括了?后面的部分，因此你可以手动解析后面的内容作为GET请求的参数．Node.js的url模块中的parse函数提供了这个功能.例如：
-      ```js
-      var http = require('http');
-      var url = require('rel');
-      var util = require('util');
+```js
+var http = require('http');
+var url = require('rel');
+var util = require('util');
       
-      http.createServer(function(req,res){
-         res.writeHead(200,{'Content-Type':'text/plain'});
-         res.end(util.inspect(url.parse(res.url,true)));
-      })
-      ```
+http.createServer(function(req,res){
+    res.writeHead(200,{'Content-Type':'text/plain'});
+    res.end(util.inspect(url.parse(res.url,true)));
+})
+```
       * 在浏览器中访问http://127.0.0.1:3000/user?name=byvoid&email=byvoid@byvoid.com
       * 通过url.parse，原始path被解析成一个对象，其中query就是我们所谓的GET请求的内容，而路径则是pathname.
