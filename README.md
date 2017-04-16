@@ -85,34 +85,38 @@
       * fs.readFileSync(filename,[encoding])是fs.readFile同步的版本 有返回值
       * fs.open(path,flags,[mode],[callback(err,fd)]),path:文件路径 flags:打开方式 mode 用于创建文件时指定权限 fd回调函数传递一个文件爱呢描述符.
       * fs.read(fd,buffer,offset,lengt,position,[callback(err,bytesRead,buffer)])
-        * fs.read的功能是从指定的文件描述父fd中读取数据并写入buffer指向的缓冲区对象.offser是buffer的写入偏移量.length是要从文件中读取的字节数.position是文件读取的起始万位置,如果position的值为null,则会从当前文件指针的位置读取.回调函数传递bytesRead和buffer,分别表示读取的字节数和缓冲区对象.
+         * fs.read的功能是从指定的文件描述父fd中读取数据并写入buffer指向的缓冲区对象.
+         * offser是buffer的写入偏移量.
+         * length是要从文件中读取的字节数.
+         * position是文件读取的起始万位置,如果position的值为null,则会从当前文件指针的位置读取.
+         * 回调函数传递bytesRead和buffer,分别表示读取的字节数和缓冲区对象.
 
->fs 模块函数表
-功能                    异步函数                                                                              同步函数
-打开文件                 fs.open(path,flags, [mode], [callback(err,fd)])                                     fs.openSync(path, flags, [mode])
-关闭文件                 fs.close(fd, [callback(err)])                                                       fs.closeSync(fd)
-读取文件(文件描述符)       fs.read(fd,buffer,offset,length,position,[callback(err, bytesRead, buffer)])        fs.readSync(fd, buffer, offset,length, position)
-写入文件(文件描述符)       fs.write(fd,buffer,offset,length,position,[callback(err, bytesWritten, buffer)])    fs.writeSync(fd, buffer, offset,length, position)
-读取文件内容              fs.readFile(filename,[encoding],[callback(err, data)])                              fs.readFileSync(filename,[encoding]
-写入文件内容              fs.writeFile(filename,[callback(err)])                                              fs.writeFileSync(filename, data,[encoding])
-删除文件                 fs.unlink(path,[callback[err]])                                                     fs.inlinkSunc(path)
-创建目录                 fs.mkdir(path, [mode], [callback(err)])                                             fs.mkdirSync(path, [mode])
-删除目录                 fs.rmdir(path, [callback(err)])                                                     fs.rmdirSync(path)
-读取目录                 fs.readdir(path, [callback(err, files)])                                            fs.readdirSync(path)
-获取真实路径              fs.realpath(path, [callback(err,resolvedPath)])                                     fs.realpathSync(path)
-更名                    fs.rename(path1, path2, [callback(err)])                                            fs.renameSync(path1, path2)
-截断                    fs.truncate(fd, len, [callback(err)])                                               fs.truncateSync(fd, len)
-更改所有权               fs.chown(path, uid, gid, [callback(err)])                                           fs.chownSync(path, uid, gid)
-更改所有权(文件描述符)     fs.fchown(fd, uid, gid, [callback(err)])                                             fs.fchownSync(fd, uid, gid)
-更改所有权(不解析符号链接)  fs.lchown(path, uid, gid, [callback(err)])                                          fs.lchownSync(path, uid, gid)
-更改权限                 fs.chmod(path, mode, [callback(err)])                                               fs.chmodSync(path, mode)
-更改权限(文件描述符)      fs.fchmod(fd, mode, [callback(err)])                                                fs.fchmodSync(fd, mode)
-更改权限(不解析符号链接)   fs.lchmod(path, mode, [callback(err)])                                              fs.lchmodSync(path, mode)
-获取文件信息              fs.stat(path, [callback(err, stats)])                                               fs.statSync(path)
-获取文件信息(文件描述符)    fs.fstat(fd, [callback(err, stats)])                                                fs.fstatSync(fd)
-获取文件信息(不解析符号链接) fs.lstat(path, [callback(err, stats)])                                              fs.lstatSync(path)
-创建硬链接                fs.link(srcpath, dstpath, [callback(err)])                                           fs.linkSync(srcpath, dstpath)
-创建符号链接              fs.symlink(linkdata, path, [type],[callback(err)])                                  fs.symlinkSync(linkdata, path,[type])
-读取链接                  fs.readlink(path, [callback(err,linkString)])                                       fs.readlinkSync(path)
-修改文件时间戳             fs.utimes(path, atime, mtime, [callback(err)])                                      fs.utimesSync(path, atime, mtime)
-修改 文件时间 戳(文件描述符) fs.futimes(fd, atime, mtime, [callback(err)])                                       fs.futimesSync(fd, atime, mtime)
+* fs 模块函数表
+* 功能                    异步函数                                                                              同步函数
+* 打开文件                 fs.open(path,flags, [mode], [callback(err,fd)])                             fs.openSync(path,flags, [mode])
+* 关闭文件                 fs.close(fd, [callback(err)])                                                      fs.closeSync(fd)
+* 读取文件(文件描述符)       fs.read(fd,buffer,offset,length,position,[callback(err, bytesRead, buffer)])        fs.readSync(fd, buffer, offset,length, position)
+* 写入文件(文件描述符)       fs.write(fd,buffer,offset,length,position,[callback(err, bytesWritten, buffer)])    fs.writeSync(fd, buffer, offset,length, position)
+* 读取文件内容              fs.readFile(filename,[encoding],[callback(err, data)])                              fs.readFileSync(filename,[encoding]
+* 写入文件内容              fs.writeFile(filename,[callback(err)])                                              fs.writeFileSync(filename, data,[encoding])
+* 删除文件                 fs.unlink(path,[callback[err]])                                                     fs.inlinkSunc(path)
+*　创建目录                 fs.mkdir(path, [mode], [callback(err)])                       fs.mkdirSync(path, [mode])
+* 删除目录                 fs.rmdir(path, [callback(err)])                                fs.rmdirSync(path)
+* 读取目录                 fs.readdir(path, [callback(err, files)])                       fs.readdirSync(path)
+* 获取真实路径              fs.realpath(path, [callback(err,resolvedPath)])                                     fs.realpathSync(path)
+* 更名                    fs.rename(path1, path2, [callback(err)])                                            fs.renameSync(path1, path2)
+* 截断                    fs.truncate(fd, len, [callback(err)])                                               fs.truncateSync(fd, len)
+* 更改所有权               fs.chown(path, uid, gid, [callback(err)])                                           fs.chownSync(path, uid, gid)
+* 更改所有权(文件描述符)     fs.fchown(fd, uid, gid, [callback(err)])                                             fs.fchownSync(fd, uid, gid)
+* 更改所有权(不解析符号链接)  fs.lchown(path, uid, gid, [callback(err)])                                          fs.lchownSync(path, uid, gid)
+* 更改权限                 fs.chmod(path, mode, [callback(err)])                                               fs.chmodSync(path, mode)
+* 更改权限(文件描述符)      fs.fchmod(fd, mode, [callback(err)])                                                fs.fchmodSync(fd, mode)
+* 更改权限(不解析符号链接)   fs.lchmod(path, mode, [callback(err)])                                              fs.lchmodSync(path, mode)
+* 获取文件信息              fs.stat(path, [callback(err, stats)])                                               fs.statSync(path)
+* 获取文件信息(文件描述符)    fs.fstat(fd, [callback(err, stats)])                                                fs.fstatSync(fd)
+* 获取文件信息(不解析符号链接) fs.lstat(path, [callback(err, stats)])                                              fs.lstatSync(path)
+* 创建硬链接                fs.link(srcpath, dstpath, [callback(err)])                                           fs.linkSync(srcpath, dstpath)
+* 创建符号链接              fs.symlink(linkdata, path, [type],[callback(err)])                                  fs.symlinkSync(linkdata, path,[type])
+* 读取链接                  fs.readlink(path, [callback(err,linkString)])                                       fs.readlinkSync(path)
+* 修改文件时间戳             fs.utimes(path, atime, mtime, [callback(err)])                                      fs.utimesSync(path, atime, mtime)
+* 修改 文件时间 戳(文件描述符) fs.futimes(fd, atime, mtime, [callback(err)])                                       fs.futimesSync(fd, atime, mtime)
