@@ -100,7 +100,7 @@
 * 读取文件内容              fs.readFile(filename,[encoding],[callback(err, data)])                              fs.readFileSync(filename,[encoding]
 * 写入文件内容              fs.writeFile(filename,[callback(err)])                                              fs.writeFileSync(filename, data,[encoding])
 * 删除文件                 fs.unlink(path,[callback[err]])                                                     fs.inlinkSunc(path)
-*　创建目录 fs.mkdir(path, [mode], [callback(err)]) fs.mkdirSync(path, [mode])
+* 创建目录 fs.mkdir(path, [mode], [callback(err)]) fs.mkdirSync(path, [mode])
 * 删除目录 fs.rmdir(path, [callback(err)]) fs.rmdirSync(path)
 * 读取目录 fs.readdir(path, [callback(err, files)]) fs.readdirSync(path)
 * 获取真实路径              fs.realpath(path, [callback(err,resolvedPath)])                                     fs.realpathSync(path)
