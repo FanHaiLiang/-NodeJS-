@@ -78,18 +78,18 @@
 * EventEmitter.removeListener(event, listener) 移除指定事件的某个监听器, listener 必须是该事件已经注册过的监听器.
 * EventEmitter.removeAllListeners([event]) 移除所有事件的所有监听器,如果指定 event ,则移除指定事件的所有监听器
 # error事件
-   * EventEmitter定义了一个特殊的事件error,它包含了"错误"的语义,我们再遇到异常的时候通常会发射error事件.当error被发射时,Eventmitter规定如果没有响应的监听器,Node.js会把它当作异常,退出程序并打印调用栈.我们一般要为会发射error事件的对象设置监听器,避免遇到错误后整个程序崩溃.
+* EventEmitter定义了一个特殊的事件error,它包含了"错误"的语义,我们再遇到异常的时候通常会发射error事件.当error被发射时,Eventmitter规定如果没有响应的监听器,Node.js会把它当作异常,退出程序并打印调用栈.我们一般要为会发射error事件的对象设置监听器,避免遇到错误后整个程序崩溃.
 # 文件系统fs
-   * fs 模块是文件操作的封装,它提供了文件的读取,写入,更名,删除,遍历目录,连接POSIX文件系统操作.
-      * fs.readFile(filename,[encoding],[callback(err,data)])是最简单的读取文件的函数. 没有返回值
-      * fs.readFileSync(filename,[encoding])是fs.readFile同步的版本 有返回值
-      * fs.open(path,flags,[mode],[callback(err,fd)]),path:文件路径 flags:打开方式 mode 用于创建文件时指定权限 fd回调函数传递一个文件爱呢描述符.
-      * fs.read(fd,buffer,offset,lengt,position,[callback(err,bytesRead,buffer)])
-         * fs.read的功能是从指定的文件描述父fd中读取数据并写入buffer指向的缓冲区对象.
-         * offser是buffer的写入偏移量.
-         * length是要从文件中读取的字节数.
-         * position是文件读取的起始万位置,如果position的值为null,则会从当前文件指针的位置读取.
-         * 回调函数传递bytesRead和buffer,分别表示读取的字节数和缓冲区对象.
+* fs 模块是文件操作的封装,它提供了文件的读取,写入,更名,删除,遍历目录,连接POSIX文件系统操作.
+* fs.readFile(filename,[encoding],[callback(err,data)])是最简单的读取文件的函数. 没有返回值
+* fs.readFileSync(filename,[encoding])是fs.readFile同步的版本 有返回值
+* fs.open(path,flags,[mode],[callback(err,fd)]),path:文件路径 flags:打开方式 mode 用于创建文件时指定权限 fd回调函数传递一个文件爱呢描述符.
+* fs.read(fd,buffer,offset,lengt,position,[callback(err,bytesRead,buffer)])
+   * fs.read的功能是从指定的文件描述父fd中读取数据并写入buffer指向的缓冲区对象.
+   * offser是buffer的写入偏移量.
+   * length是要从文件中读取的字节数.
+   * position是文件读取的起始万位置,如果position的值为null,则会从当前文件指针的位置读取.
+   * 回调函数传递bytesRead和buffer,分别表示读取的字节数和缓冲区对象.
 
 * fs 模块函数表
 * 功能                    异步函数                                                                              同步函数
